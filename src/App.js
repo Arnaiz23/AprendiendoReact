@@ -2,12 +2,13 @@ import logo from './assets/images/logo.svg';
 import './assets/css/App.css';
 
 // *Importar componentes
-import MiComponente from './components/MiComponente';
+// import MiComponente from './components/MiComponente';
 import Peliculas from './components/Peliculas';
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
+import SeccionPruebas from './components/SeccionPruebas';
 
 function HolaMundo(nombre) {
   let presentacion = <h2>Hola, soy {nombre}</h2>;  //Objeto
@@ -26,15 +27,10 @@ function App() {
     <div className="App">
 
       <Header></Header>
-      <Slider></Slider>
+      <Slider titulo="Prueba"></Slider>
 
       <div class="center">
-        <section className="componentes" id="content">
-
-          <MiComponente></MiComponente>
-          <Peliculas></Peliculas>
-
-        </section>
+        <Peliculas></Peliculas>
 
         <Sidebar></Sidebar>
       </div>

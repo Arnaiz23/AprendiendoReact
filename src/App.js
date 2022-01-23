@@ -9,6 +9,7 @@ import Slider from './components/Slider';
 import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
 import SeccionPruebas from './components/SeccionPruebas';
+import Router from './Router';
 
 function HolaMundo(nombre) {
   let presentacion = <h2>Hola, soy {nombre}</h2>;  //Objeto
@@ -30,7 +31,9 @@ function App() {
       <Slider titulo="Prueba"></Slider>
 
       <div class="center">
-        <Peliculas></Peliculas>
+        {/* <Peliculas></Peliculas> */}
+
+        <Router />
 
         <Sidebar></Sidebar>
       </div>

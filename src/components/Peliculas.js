@@ -5,13 +5,7 @@ import Pelicula from './Pelicula';
 class Peliculas extends Component {
 
     state = {
-        peliculas: [
-            { title: 'Batman vs Superman', image: 'https://hbomax-images.warnermediacdn.com/images/GXvuNTw6T2IaEUwEAAAT-/tileburnedin?size=1280x720&partner=hbomaxcom&language=es-419&v=01cbb8673567f9c465a09bd397867f07&host=art-gallery-latam.api.hbo.com&w=1280' },
-            { title: 'Gran torino', image: 'https://static.motor.es/fotos-noticias/2013/05/constantino-romero-y-clint-eastwood-una-pareja-de-cine-que-se-despidio-en-un-gran-torino-201313511_1.jpg' },
-            { title: 'Looper', image: 'https://images.mubicdn.net/images/film/97066/cache-59871-1547103610/image-w1280.jpg' },
-        ],
-        nombre: "Adrian Arnaiz",
-        pelicula: ''
+
     };
 
     cambiarTitulo = () => {
@@ -32,6 +26,24 @@ class Peliculas extends Component {
         })
     }
 
+    // Antes de que se cargue
+    componentWillMount() {
+        this.setState({
+            peliculas: [
+                { title: 'Batman vs Superman', image: 'https://hbomax-images.warnermediacdn.com/images/GXvuNTw6T2IaEUwEAAAT-/tileburnedin?size=1280x720&partner=hbomaxcom&language=es-419&v=01cbb8673567f9c465a09bd397867f07&host=art-gallery-latam.api.hbo.com&w=1280' },
+                { title: 'Gran torino', image: 'https://static.motor.es/fotos-noticias/2013/05/constantino-romero-y-clint-eastwood-una-pareja-de-cine-que-se-despidio-en-un-gran-torino-201313511_1.jpg' },
+                { title: 'Looper', image: 'https://images.mubicdn.net/images/film/97066/cache-59871-1547103610/image-w1280.jpg' },
+            ],
+            nombre: "Adrian Arnaiz",
+            pelicula: ''
+        })
+    }
+
+    // Cuando se carga
+    /* componentDidMount() {
+        alert("Se acaba de cargar el componente");
+    } */
+
     render() {
 
         var pStyle = {
@@ -39,7 +51,28 @@ class Peliculas extends Component {
             color: 'white',
             padding: '10px'
         }
-        
+
+
+        // -----------OPCION 2---------------------
+        let favorita = {};
+
+        if (this.state.pelicula) {
+            favorita = (
+                <p style={pStyle}>
+                    <strong>La pelicula favorita es: </strong>
+                    <span>{this.state.pelicula}</span>
+                </p>
+            )
+        } else {
+            favorita = (
+                <div>
+                    <strong>No hay ninguna pelicula favorita</strong>
+                </div>
+            )
+        }
+
+        // ----------------------------------------
+
         return (
             <div id="content" className="peliculas">
                 <h2 className="subheader">Peliculas</h2>
@@ -49,12 +82,31 @@ class Peliculas extends Component {
                     <input type="button" onClick={this.cambiarTitulo} value="Cambiar titulo de batman" />
                 </p>
 
-                {this.state.pelicula &&
+                {/* --------------OPCION 1------------- */}
+                {/* Una condicion */}
+                {/* {this.state.pelicula &&
                     <p style={pStyle}>
                         <strong>La pelicula favorita es: </strong>
                         <span>{this.state.pelicula}</span>
                     </p>
-                }
+                } */}
+
+                {/* 2 condiciones */}
+                {/* {this.state.pelicula ?
+                    (
+                        <p style={pStyle}>
+                            <strong>La pelicula favorita es: </strong>
+                            <span>{this.state.pelicula}</span>
+                        </p>
+                    ) : (
+                        <div>
+                            <strong>No hay ninguna pelicula favorita</strong>
+                        </div>
+                    )
+                } */}
+
+                {/* ------------OPCION 2------------------- */}
+                {favorita}
 
 
                 {/* Crear componente pelicula */}

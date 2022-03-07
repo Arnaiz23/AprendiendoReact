@@ -4,12 +4,16 @@ class Slider extends Component {
 
     render() {
         // *Sacar los props
-        console.log(this.props);
+        // console.log(this.props);
         
         return (
-            <div id="slider" className="slider-big">
-                <h1>Bienvenido al Curso de React</h1>
-                <a href="blog.html" className="btn-white">Ir al blog</a>
+            <div id="slider" className={this.props.size}>
+                <h1>{this.props.title}</h1>
+                {this.props.btn && 
+                    (
+                        <a href="blog.html" className="btn-white">{this.props.btn}</a>
+                    )
+                }
             </div>
         );
     }

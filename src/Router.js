@@ -5,6 +5,14 @@ import SeccionPruebas from './components/SeccionPruebas';
 import MiComponente from './components/MiComponente';
 import Peliculas from './components/Peliculas';
 import Error from './components/Error';
+import Pruebas from './components/Pruebas';
+import Header from './components/Header';
+import Slider from './components/Slider';
+import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Blog from './components/Blog';
+import Formulario from './components/Formulario';
 
 class Router extends Component {
 
@@ -12,23 +20,31 @@ class Router extends Component {
         return (
 
             <BrowserRouter>
-                {/* // Configurar rutas y paginas */}
-                <Routes>
+                <Header></Header>
 
-                    <Route path="/" element={<Peliculas />} />
-                    <Route path="/ruta-prueba" element={<SeccionPruebas />} />
-                    <Route path="/segunda-ruta" element={<MiComponente />} />
+                    {/* // Configurar rutas y paginas */}
+                    <Routes>
 
-                    <Route path="/pruebas" element={
-                        <div id="content">
-                            <h2 className="subheader">Página de pruebas</h2>
-                        </div>
-                    } />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/ruta-prueba" element={<SeccionPruebas />} />
+                        <Route path="/segunda-ruta" element={<MiComponente />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/formulario" element={<Formulario />} />
+                        <Route path="/peliculas" element={<Peliculas />} />
 
-                    <Route path="*" element={<Error />} />
+                        <Route path="/pruebas2/:id" element={<Pruebas />} />
+                        <Route path="/pruebas" element={
+                            <div id="content">
+                                <h2 className="subheader">Página de pruebas</h2>
+                            </div>
+                        } />
 
-                </Routes>
+                        <Route path="*" element={<Error />} />
 
+                    </Routes>
+
+                <Footer></Footer>
             </BrowserRouter>
 
         );

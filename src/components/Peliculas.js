@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MensajeEstatico from './MensajeEstatico';
 import Pelicula from './Pelicula';
+import Slider from './Slider';
+import Sidebar from './Sidebar';
 
 class Peliculas extends Component {
 
@@ -74,55 +76,62 @@ class Peliculas extends Component {
         // ----------------------------------------
 
         return (
-            <div id="content" className="peliculas">
-                <h2 className="subheader">Peliculas</h2>
+            <React.Fragment>
+                <div id="peliculas">
+                    <Slider title="Peliculas" size="slider-small"></Slider>
 
-                <p>Selección de las películas favoritas de {this.state.nombre}</p>
-                <p>
-                    <input type="button" onClick={this.cambiarTitulo} value="Cambiar titulo de batman" />
-                </p>
+                    <div id="content" className="peliculas">
+                        <h2 className="subheader">Peliculas</h2>
 
-                {/* --------------OPCION 1------------- */}
-                {/* Una condicion */}
-                {/* {this.state.pelicula &&
-                    <p style={pStyle}>
-                        <strong>La pelicula favorita es: </strong>
-                        <span>{this.state.pelicula}</span>
-                    </p>
-                } */}
+                        <p>Selección de las películas favoritas de {this.state.nombre}</p>
+                        <p>
+                            <input type="button" onClick={this.cambiarTitulo} value="Cambiar titulo de batman" />
+                        </p>
 
-                {/* 2 condiciones */}
-                {/* {this.state.pelicula ?
-                    (
+                        {/* --------------OPCION 1------------- */}
+                        {/* Una condicion */}
+                        {/* {this.state.pelicula &&
                         <p style={pStyle}>
                             <strong>La pelicula favorita es: </strong>
                             <span>{this.state.pelicula}</span>
                         </p>
-                    ) : (
-                        <div>
-                            <strong>No hay ninguna pelicula favorita</strong>
+                    } */}
+
+                        {/* 2 condiciones */}
+                        {/* {this.state.pelicula ?
+                        (
+                            <p style={pStyle}>
+                                <strong>La pelicula favorita es: </strong>
+                                <span>{this.state.pelicula}</span>
+                            </p>
+                        ) : (
+                            <div>
+                                <strong>No hay ninguna pelicula favorita</strong>
+                            </div>
+                        )
+                    } */}
+
+                        {/* ------------OPCION 2------------------- */}
+                        {favorita}
+
+
+                        {/* Crear componente pelicula */}
+
+                        {/* Metodo pero menos efectivo */}
+                        <div id="articles" className="peliculas">
+                            {
+                                this.state.peliculas.map((pelicula, id) => {
+                                    return (
+                                        <Pelicula key={id} pelicula={pelicula} marcarFavorita={this.favorita}></Pelicula>
+                                    );
+                                })
+                            }
                         </div>
-                    )
-                } */}
 
-                {/* ------------OPCION 2------------------- */}
-                {favorita}
-
-
-                {/* Crear componente pelicula */}
-
-                {/* Metodo pero menos efectivo */}
-                <div id="articles" className="peliculas">
-                    {
-                        this.state.peliculas.map((pelicula, id) => {
-                            return (
-                                <Pelicula key={id} pelicula={pelicula} marcarFavorita={this.favorita}></Pelicula>
-                            );
-                        })
-                    }
+                    </div>
+                    <Sidebar blog="false"></Sidebar>
                 </div>
-
-            </div>
+            </React.Fragment>
         );
     }
 

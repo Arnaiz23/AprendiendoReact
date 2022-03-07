@@ -27,19 +27,19 @@ function App() {
   return (
     <div className="App">
 
-      <Header></Header>
-      <Slider titulo="Prueba"></Slider>
+      {/* <Header></Header> */}
+      {/* <Slider titulo="Prueba"></Slider> */}
 
-      <div class="center">
+      {/* <div class="center"> */}
         {/* <Peliculas></Peliculas> */}
 
         <Router />
 
-        <Sidebar></Sidebar>
-      </div>
+        {/* <Sidebar></Sidebar> */}
+      {/* </div> */}
 
 
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

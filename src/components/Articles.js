@@ -17,16 +17,19 @@ class Articles extends Component {
 
     componentDidMount() {
         var home = this.props.home;
+        var search = this.props.search;
 
-        if(home === "true"){
-            this.getLastArticles();    
-        }else{
+        if (home === "true") {
+            this.getLastArticles();
+        } else if (search && search != null && search != undefined) {
+            this.getArticlesBySearch(search);
+        } else {
             this.getArticles();
         }
     }
 
     getArticles = () => {
-        axios.get(this.url+"articles")
+        axios.get(this.url + "articles")
             .then(res => {
                 this.setState({
                     articles: res.data.articles,
@@ -36,10 +39,27 @@ class Articles extends Component {
     }
 
     getLastArticles = () => {
-        axios.get(this.url+"articles/last")
+        axios.get(this.url + "articles/last")
             .then(res => {
                 this.setState({
                     articles: res.data.articles,
+                    status: "success"
+                })
+            })
+    }
+
+    getArticlesBySearch = (search) => {
+        axios.get(this.url + "search/" + search)
+            .then(res => {
+
+                this.setState({
+                    articles: res.data.articles,
+                    status: "success"
+                })
+            })
+            .catch(err =>{
+                this.setState({
+                    articles: [],
                     status: "success"
                 })
             })
@@ -53,11 +73,11 @@ class Articles extends Component {
                 return (
                     <article className="article-item" id="article-template" key={article._id}>
                         <div className="image-wrap">
-                            {article.image ? 
+                            {article.image ?
                                 (
-                                    <img src={this.url+"get-image/"+article.image} alt="paisaje"/>
+                                    <img src={this.url + "get-image/" + article.image} alt="paisaje" />
                                 ) : (
-                                    <img src={defaultImage} alt="paisaje"/>
+                                    <img src={defaultImage} alt="paisaje" />
                                 )
                             }
                         </div>
@@ -66,7 +86,7 @@ class Articles extends Component {
                             <span className="date">
                                 <Moment locale="es" fromNow>{article.date}</Moment>
                             </span>
-                            <Link to={"/blog/articulo/"+article._id}>Leer más</Link>
+                            <Link to={"/blog/articulo/" + article._id}>Leer más</Link>
                         </div>
                     </article>
                 )

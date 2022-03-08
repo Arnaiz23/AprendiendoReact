@@ -212,6 +212,25 @@ body{
   background-color:black;
 }
 
+.btn-danger{
+  background-color: rgb(224, 24, 24);
+  transition: background-color .2s;
+  color: #fff !important;
+}
+
+.btn-danger:hover{
+  background-color:rgb(170, 5, 5);
+}
+
+.btn-warning{
+  background-color: rgb(189, 226, 23);
+  transition: background-color .2s;
+}
+
+.btn-warning:hover{
+  background-color:rgb(150, 147, 7);
+}
+
 .mid-form{
   width: 60%;
   margin: 0 auto;
@@ -443,4 +462,9 @@ textarea{
 
 .active{
   border-bottom: 2px solid #3cb2d3;
+}
+
+.imgArticle{
+  height: 310px !important;
+  object-fit: cover;
 }

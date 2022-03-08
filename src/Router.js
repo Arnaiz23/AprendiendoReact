@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Blog from './components/Blog';
 import Formulario from './components/Formulario';
+import Search from './components/Search';
 
 class Router extends Component {
 
@@ -30,8 +31,12 @@ class Router extends Component {
                         <Route path="/ruta-prueba" element={<SeccionPruebas />} />
                         <Route path="/segunda-ruta" element={<MiComponente />} />
                         <Route path="/blog" element={<Blog />} />
+                        <Route path="/blog/busqueda/:search" element={<Search />} />
                         <Route path="/formulario" element={<Formulario />} />
                         <Route path="/peliculas" element={<Peliculas />} />
+                        <Route path="/blog/articulo/:id" element={
+                            <h1>Articulo</h1>
+                        }/>
 
                         <Route path="/pruebas2/:id" element={<Pruebas />} />
                         <Route path="/pruebas" element={

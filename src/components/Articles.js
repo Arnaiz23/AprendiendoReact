@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Moment from "react-moment";
+import 'moment/locale/es';
 import { global } from "../Global";
 import defaultImage from "../assets/images/default.png";
+import { Link } from "react-router-dom";
 
 class Articles extends Component {
 
@@ -13,7 +16,13 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        this.getArticles();
+        var home = this.props.home;
+
+        if(home === "true"){
+            this.getLastArticles();    
+        }else{
+            this.getArticles();
+        }
     }
 
     getArticles = () => {
@@ -23,8 +32,16 @@ class Articles extends Component {
                     articles: res.data.articles,
                     status: "success"
                 })
+            })
+    }
 
-                console.log(this.state);
+    getLastArticles = () => {
+        axios.get(this.url+"articles/last")
+            .then(res => {
+                this.setState({
+                    articles: res.data.articles,
+                    status: "success"
+                })
             })
     }
 
@@ -34,7 +51,7 @@ class Articles extends Component {
 
             var listArticles = this.state.articles.map((article) => {
                 return (
-                    <article className="article-item" id="article-template">
+                    <article className="article-item" id="article-template" key={article._id}>
                         <div className="image-wrap">
                             {article.image ? 
                                 (
@@ -47,9 +64,9 @@ class Articles extends Component {
                         <div>
                             <h2>{article.title}</h2>
                             <span className="date">
-                                H{article.date}
+                                <Moment locale="es" fromNow>{article.date}</Moment>
                             </span>
-                            <a href="article.html">Leer más</a>
+                            <Link to={"/blog/articulo/"+article._id}>Leer más</Link>
                         </div>
                     </article>
                 )

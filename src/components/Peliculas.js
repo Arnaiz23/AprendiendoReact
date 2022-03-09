@@ -7,7 +7,13 @@ import Sidebar from './Sidebar';
 class Peliculas extends Component {
 
     state = {
-
+        peliculas: [
+            { title: 'Batman vs Superman', image: 'https://hbomax-images.warnermediacdn.com/images/GXvuNTw6T2IaEUwEAAAT-/tileburnedin?size=1280x720&partner=hbomaxcom&language=es-419&v=01cbb8673567f9c465a09bd397867f07&host=art-gallery-latam.api.hbo.com&w=1280' },
+            { title: 'Gran torino', image: 'https://static.motor.es/fotos-noticias/2013/05/constantino-romero-y-clint-eastwood-una-pareja-de-cine-que-se-despidio-en-un-gran-torino-201313511_1.jpg' },
+            { title: 'Looper', image: 'https://images.mubicdn.net/images/film/97066/cache-59871-1547103610/image-w1280.jpg' },
+        ],
+        nombre: "Adrian Arnaiz",
+        pelicula: ''
     };
 
     cambiarTitulo = () => {
@@ -29,7 +35,7 @@ class Peliculas extends Component {
     }
 
     // Antes de que se cargue
-    componentWillMount() {
+    /* componentWillMount() {
         this.setState({
             peliculas: [
                 { title: 'Batman vs Superman', image: 'https://hbomax-images.warnermediacdn.com/images/GXvuNTw6T2IaEUwEAAAT-/tileburnedin?size=1280x720&partner=hbomaxcom&language=es-419&v=01cbb8673567f9c465a09bd397867f07&host=art-gallery-latam.api.hbo.com&w=1280' },
@@ -39,7 +45,7 @@ class Peliculas extends Component {
             nombre: "Adrian Arnaiz",
             pelicula: ''
         })
-    }
+    } */
 
     // Cuando se carga
     /* componentDidMount() {

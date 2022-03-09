@@ -245,7 +245,7 @@ body{
   margin-top: 10px;
 }
 
-input[type="text"],textarea{
+input[type="text"],textarea, input[type="file"]{
   width: 100%;
   min-height: 30px;
   border: 1px solir #ccc;
@@ -256,6 +256,10 @@ input[type="text"],textarea{
 input[type="text"]:focus,textarea:focus{
   box-shadow: 0 0 5px #444;
   outline: none;
+}
+
+input[type="submit"]{
+  margin-top: 15px;
 }
 
 textarea{
@@ -467,4 +471,8 @@ textarea{
 .imgArticle{
   height: 310px !important;
   object-fit: cover;
+}
+
+.srv-validation-message{
+  color: #f33;
 }

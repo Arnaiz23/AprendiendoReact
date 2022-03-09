@@ -15,6 +15,8 @@ import Blog from './components/Blog';
 import Formulario from './components/Formulario';
 import Search from './components/Search';
 import Article from './components/Article';
+import CreateArticle from './components/CreateArticle';
+import EditArticle from './components/EditArticle';
 
 class Router extends Component {
 
@@ -32,6 +34,8 @@ class Router extends Component {
                     <Route path="/ruta-prueba" element={<SeccionPruebas />} />
                     <Route path="/segunda-ruta" element={<MiComponente />} />
                     <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/crear" element={<CreateArticle />} />
+                    <Route path="/blog/editar/:id" element={<EditArticle />} />
                     <Route path="/blog/busqueda/:search" element={<Search />} />
 
                     {/* <Route path="/blog/busqueda" element={<Search />} >
